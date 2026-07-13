@@ -1,22 +1,18 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "hostRequirements": {
-    "cpus": 4
-  },
-  "waitFor": "onCreateCommand",
-  "updateContentCommand": "python3 -m pip install -r requirements.txt",
-  "postCreateCommand": "bash .devcontainer/post-create-command.sh",
+  "name": "Python Data Science",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
   "customizations": {
-    "codespaces": {
-      "openFiles": []
-    },
     "vscode": {
       "extensions": [
-        "ms-toolsai.jupyter",
         "ms-python.python",
-        "GitHub.copilot-chat",
-        "ms-toolsai.datawrangler"
-      ]
+        "ms-toolsai.jupyter",
+        "ms-python.vscode-pylance"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "jupyter.askForKernelRestart": false
+      }
     }
-  }
+  },
+  "postCreateCommand": "python -m pip install --upgrade pip && pip install numpy pandas matplotlib seaborn jupyter ipykernel"
 }
